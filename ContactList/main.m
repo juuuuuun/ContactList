@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "InputCollector.h"
+#import "ContactList.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
         InputCollector* inputCollector = [[InputCollector alloc] init];
+        ContactList* contactList = [[ContactList alloc] init];
         
         while(YES) {
             
@@ -23,6 +25,17 @@ int main(int argc, const char * argv[]) {
             if([usernameInput isEqualToString:@"quit"]) {
                 NSLog(@"Adieu");
                 break;
+            }
+            
+            if([usernameInput isEqualToString:@"new"]) {
+                // create new contact
+                NSString* newContactNameInput = [inputCollector inputForPrompt:@"What is the full name of the new contact?"];
+                
+                NSString* newContactEmailInput = [inputCollector inputForPrompt:@"What is the email address of the new contact?"];
+                
+                Contact* newContact = [[Contact alloc] initWithFullName:newContactNameInput emailAddress:newContactEmailInput];
+                
+                [contactList addContact:newContact];
             }
             
             

@@ -10,4 +10,16 @@
 
 @implementation Contact
 
+-(instancetype)init {
+    return [self initWithFullName:@"Sample Name" emailAddress:@"sampleEmail@email.com"];
+}
+
+-(instancetype)initWithFullName:(NSString *)fullName emailAddress:(NSString *)emailAddress {
+    if([super init]) {
+        _fullName = fullName;
+        _emailAddress = emailAddress;
+    }
+    return self;
+}
+
 @end

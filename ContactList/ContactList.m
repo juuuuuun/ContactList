@@ -10,4 +10,15 @@
 
 @implementation ContactList
 
+-(instancetype)init {
+    if([super init]) {
+        _listOfContacts = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (void)addContact:(Contact *)newContact {
+    [self.listOfContacts addObject:newContact];
+}
+
 @end
