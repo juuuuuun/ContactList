@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C815DF8A21E546FB007AF507 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C815DF8921E546FB007AF507 /* main.m */; };
+		C815DF9221E55EDD007AF507 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = C815DF9121E55EDD007AF507 /* Contact.m */; };
+		C815DF9521E55EE3007AF507 /* ContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = C815DF9421E55EE3007AF507 /* ContactList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		C815DF8621E546FB007AF507 /* ContactList */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ContactList; sourceTree = BUILT_PRODUCTS_DIR; };
 		C815DF8921E546FB007AF507 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C815DF9021E55EDD007AF507 /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		C815DF9121E55EDD007AF507 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		C815DF9321E55EE3007AF507 /* ContactList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactList.h; sourceTree = "<group>"; };
+		C815DF9421E55EE3007AF507 /* ContactList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				C815DF8921E546FB007AF507 /* main.m */,
+				C815DF9021E55EDD007AF507 /* Contact.h */,
+				C815DF9121E55EDD007AF507 /* Contact.m */,
+				C815DF9321E55EE3007AF507 /* ContactList.h */,
+				C815DF9421E55EE3007AF507 /* ContactList.m */,
 			);
 			path = ContactList;
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C815DF9521E55EE3007AF507 /* ContactList.m in Sources */,
+				C815DF9221E55EDD007AF507 /* Contact.m in Sources */,
 				C815DF8A21E546FB007AF507 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
