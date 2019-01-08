@@ -10,6 +10,7 @@
 		C815DF8A21E546FB007AF507 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C815DF8921E546FB007AF507 /* main.m */; };
 		C815DF9221E55EDD007AF507 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = C815DF9121E55EDD007AF507 /* Contact.m */; };
 		C815DF9521E55EE3007AF507 /* ContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = C815DF9421E55EE3007AF507 /* ContactList.m */; };
+		C815DF9821E55FBD007AF507 /* InputCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = C815DF9721E55FBD007AF507 /* InputCollector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		C815DF9121E55EDD007AF507 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		C815DF9321E55EE3007AF507 /* ContactList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactList.h; sourceTree = "<group>"; };
 		C815DF9421E55EE3007AF507 /* ContactList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactList.m; sourceTree = "<group>"; };
+		C815DF9621E55FBD007AF507 /* InputCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputCollector.h; sourceTree = "<group>"; };
+		C815DF9721E55FBD007AF507 /* InputCollector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputCollector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				C815DF8921E546FB007AF507 /* main.m */,
+				C815DF9621E55FBD007AF507 /* InputCollector.h */,
+				C815DF9721E55FBD007AF507 /* InputCollector.m */,
 				C815DF9021E55EDD007AF507 /* Contact.h */,
 				C815DF9121E55EDD007AF507 /* Contact.m */,
 				C815DF9321E55EE3007AF507 /* ContactList.h */,
@@ -130,6 +135,7 @@
 			files = (
 				C815DF9521E55EE3007AF507 /* ContactList.m in Sources */,
 				C815DF9221E55EDD007AF507 /* Contact.m in Sources */,
+				C815DF9821E55FBD007AF507 /* InputCollector.m in Sources */,
 				C815DF8A21E546FB007AF507 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
