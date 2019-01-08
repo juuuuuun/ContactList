@@ -38,7 +38,10 @@ int main(int argc, const char * argv[]) {
                 [contactList addContact:newContact];
             }
             
-            
+            if([usernameInput isEqualToString:@"list"]) {
+                // Print out the list of contacts
+                [contactList printOutContactList];
+            }
         }
     }
     return 0;

@@ -21,4 +21,11 @@
     [self.listOfContacts addObject:newContact];
 }
 
+-(void)printOutContactList {
+    for(int i = 0; i < self.listOfContacts.count; i++) {
+        Contact* contactInList = [self.listOfContacts objectAtIndex:i];
+        NSLog(@"%i: <%@> (%@)", i, contactInList.fullName, contactInList.emailAddress);
+    }
+}
+
 @end
