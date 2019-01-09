@@ -42,6 +42,13 @@
         NSLog(@"ID: %lu", index);
         NSLog(@"Full name: %@", contactAtIndex.fullName);
         NSLog(@"Email address: %@", contactAtIndex.emailAddress);
+        if( contactAtIndex.phoneNumbers.count > 0) {
+            NSLog(@"Phone numbers of this contact: ");
+            for(NSString* label in contactAtIndex.phoneNumbers) {
+                NSLog(@"%@: %@", label, [contactAtIndex.phoneNumbers objectForKey:label]);
+            }
+        }
+        
     }
 }
 
@@ -50,8 +57,7 @@
     for(Contact* contact in self.listOfContacts) {
         if([contact.fullName localizedCaseInsensitiveContainsString:term] ||
            [contact.emailAddress localizedCaseInsensitiveContainsString:term] ) {
-            NSLog(@"Full name: %@", contact.fullName);
-            NSLog(@"Email address: %@", contact.emailAddress);
+            [self displayContactAtIndex: [self.listOfContacts indexOfObject:contact]];
             printCount++;
         }
     }

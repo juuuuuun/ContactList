@@ -17,13 +17,15 @@ int main(int argc, const char * argv[]) {
         ContactList* contactList = [[ContactList alloc] init];
         while(YES) {
             
-            NSString* usernameInput = [inputCollector inputForPrompt:@"What would you like do next? \nnew - Create a new contact \nlist - List all contacts \nshow - Show a contact in the list (needs second argument: id e.g. show 9) \nfind - Search the list (needs second argument searchTerm e.g. find ted) \nphone - Add a phone number to an existing contact \nhistory - Print the last 3 commands \nquit - Exit Application \n> "];
+            NSString* usernameInput = [inputCollector inputForPrompt:@"\n\nWhat would you like do next? \nnew - Create a new contact \nlist - List all contacts \nshow - Show a contact in the list (needs second argument: id e.g. show 9) \nfind - Search the list (needs second argument searchTerm e.g. find ted) \nphone - Add a phone number to an existing contact \nhistory - Print the last 3 commands (excluding this specific of call of command) \nquit - Exit Application \n> "];
 
             // user input "quit" will quit the string after wishing user adieu
             if([usernameInput isEqualToString:@"quit"]) {
                 NSLog(@"Adieu");
                 break;
             } else if([usernameInput isEqualToString:@"new"]) {
+                [inputCollector addCommand:usernameInput];
+                
                 // create new contact
                 NSString* newContactEmailInput = [inputCollector inputForPrompt:@"What is the email address of the new contact?"];
 
@@ -38,13 +40,17 @@ int main(int argc, const char * argv[]) {
 
                 [contactList addContact:newContact];
             } else if([usernameInput isEqualToString:@"list"]) {
+                [inputCollector addCommand:usernameInput];
+                
                 // Print out the list of contacts if the contact list is not 0
                 if(contactList.listOfContacts.count == 0) {
                     NSLog(@"No contact in the list currently");
                 } else {
                     [contactList printOutContactList];
                 }
-            } else if(usernameInput.length > 4 && [[usernameInput substringToIndex:4] isEqualToString:@"show"]) {
+            } else if(usernameInput.length > 4 && [usernameInput hasPrefix:@"show"]) {
+                [inputCollector addCommand:usernameInput];
+                
                 NSString* searchId = [usernameInput substringFromIndex:5];
 
                 if( [searchId rangeOfCharacterFromSet:NSCharacterSet.decimalDigitCharacterSet.invertedSet ].location == NSNotFound) {
@@ -56,13 +62,16 @@ int main(int argc, const char * argv[]) {
             } else if(usernameInput.length == 4 && [usernameInput isEqualToString:@"show"]) {
                 NSLog(@"show command needs a second argument to work properly");
                 NSLog(@"e.g. show 9");
-            } else if(usernameInput.length > 4 && [[usernameInput substringToIndex:4] isEqualToString:@"find"]) {
+            } else if(usernameInput.length > 4 && [usernameInput hasPrefix:@"find"]) {
+                [inputCollector addCommand:usernameInput];
+                
                 NSString* searchTerm = [usernameInput substringFromIndex:5];
                 [contactList searchListAndDisplayContactWithTerm:searchTerm];
             } else if(usernameInput.length == 4 && [usernameInput isEqualToString:@"find"]) {
                 NSLog(@"find command needs a second argument to work properly");
                 NSLog(@"e.g. find ted");
             } else if([usernameInput isEqualToString:@"phone"]) {
+                [inputCollector addCommand:usernameInput];
                 
                 if(contactList.listOfContacts.count == 0) {
                     NSLog(@"No contact in the list currently");
@@ -88,8 +97,8 @@ int main(int argc, const char * argv[]) {
                     }
                 }
             } else if([usernameInput isEqualToString:@"history"]) {
-                // Print history
-                ;
+                [inputCollector listPastCommands];
+                [inputCollector addCommand:usernameInput];
             } else {
                 NSLog(@"Invalid command");
             }

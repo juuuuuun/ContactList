@@ -12,9 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface InputCollector : NSObject
 
+@property (nonatomic, strong, readonly) NSArray* pastCommands;
+
 - (NSString *) inputForPrompt:(NSString *)promptString;
 
 - (NSNumber *) inputForIntegerPrompt:(NSString *)promptString;
+
+- (void) addCommand:(NSString *)command;
+
+- (void) listPastCommands;
 @end
 
 NS_ASSUME_NONNULL_END

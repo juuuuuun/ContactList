@@ -8,8 +8,20 @@
 
 #import "InputCollector.h"
 
+@interface InputCollector () {
+    NSMutableArray* _mutablePastCommands;
+}
+
+@end
 
 @implementation InputCollector
+
+-(instancetype)init {
+    if([super init]) {
+        _mutablePastCommands = [[NSMutableArray alloc] initWithObjects:@"History end reached", nil];
+    }
+    return self;
+}
 
 -(NSString *)inputForPrompt:(NSString *)promptString {
     NSLog(@"%@", promptString);
@@ -29,4 +41,22 @@
         return nil;
     }
 }
+
+- (void)addCommand:(NSString *)command {
+    [_mutablePastCommands insertObject:command atIndex:0];
+    if(_mutablePastCommands.count > 3) {
+        [_mutablePastCommands removeObjectAtIndex:_mutablePastCommands.count-1];
+    }
+}
+
+-(void)listPastCommands {
+    for(NSString* command in _mutablePastCommands) {
+        NSLog(@"%@", command);
+    }
+}
+
+-(NSArray *) pastCommands {
+    return [[NSArray alloc] initWithArray:_mutablePastCommands];
+}
+
 @end
