@@ -8,6 +8,7 @@
 
 #import "InputCollector.h"
 
+
 @implementation InputCollector
 
 -(NSString *)inputForPrompt:(NSString *)promptString {
@@ -18,5 +19,4 @@
     
     return [[[NSString alloc] initWithUTF8String:userInput] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
-
 @end

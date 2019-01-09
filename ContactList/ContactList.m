@@ -28,4 +28,39 @@
     }
 }
 
+-(void)displayContactAtIndex:(NSUInteger)index {
+    if(index >= self.listOfContacts.count) {
+        NSLog(@"Not found");
+    } else {
+        Contact* contactAtIndex = [self.listOfContacts objectAtIndex:index];
+        NSLog(@"ID: %lu", index);
+        NSLog(@"Full name: %@", contactAtIndex.fullName);
+        NSLog(@"Email address: %@", contactAtIndex.emailAddress);
+    }
+}
+
+-(void)searchListAndDisplayContactWithTerm:(NSString *)term {
+    int printCount = 0;
+    for(Contact* contact in self.listOfContacts) {
+        if([contact.fullName localizedCaseInsensitiveContainsString:term] ||
+           [contact.emailAddress localizedCaseInsensitiveContainsString:term] ) {
+            NSLog(@"Full name: %@", contact.fullName);
+            NSLog(@"Email address: %@", contact.emailAddress);
+            printCount++;
+        }
+    }
+    if( printCount == 0 ) {
+        NSLog(@"Not found");
+    }
+}
+
+-(BOOL)isContactInList:(NSString *)emailAddress {
+    for(Contact* contact in self.listOfContacts) {
+        if([contact.emailAddress isEqualToString:emailAddress]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

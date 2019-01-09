@@ -19,6 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) printOutContactList;
 
+- (void) displayContactAtIndex:(NSUInteger)index;
+
+- (void) searchListAndDisplayContactWithTerm:(NSString *)term;
+
+- (BOOL) isContactInList:(NSString *)emailAddress;
+
 @end
 
 NS_ASSUME_NONNULL_END

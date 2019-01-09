@@ -15,32 +15,46 @@ int main(int argc, const char * argv[]) {
         
         InputCollector* inputCollector = [[InputCollector alloc] init];
         ContactList* contactList = [[ContactList alloc] init];
-        
         while(YES) {
             
-            
-            NSString* usernameInput = [inputCollector inputForPrompt:@"What would you like do next? \nnew - Create a new contact \nlist - List all contacts \nquit - Exit Application \n> "];
-            
+            NSString* usernameInput = [inputCollector inputForPrompt:@"What would you like do next? \nnew - Create a new contact \nlist - List all contacts \nshow - Show a contact in the list \nfind - Search the list (needs second argument e.g. find ted) \nhistory - Print the last 3 commands \nquit - Exit Application \n> "];
+
             // user input "quit" will quit the string after wishing user adieu
             if([usernameInput isEqualToString:@"quit"]) {
                 NSLog(@"Adieu");
                 break;
-            }
-            
-            if([usernameInput isEqualToString:@"new"]) {
+            } else if([usernameInput isEqualToString:@"new"]) {
                 // create new contact
-                NSString* newContactNameInput = [inputCollector inputForPrompt:@"What is the full name of the new contact?"];
-                
                 NSString* newContactEmailInput = [inputCollector inputForPrompt:@"What is the email address of the new contact?"];
-                
+
+                if([contactList isContactInList:newContactEmailInput]) {
+                    NSLog(@"Contact already in the list");
+                    continue;
+                }
+
+                NSString* newContactNameInput = [inputCollector inputForPrompt:@"What is the full name of the new contact?"];
+
                 Contact* newContact = [[Contact alloc] initWithFullName:newContactNameInput emailAddress:newContactEmailInput];
-                
+
                 [contactList addContact:newContact];
-            }
-            
-            if([usernameInput isEqualToString:@"list"]) {
+            } else if([usernameInput isEqualToString:@"list"]) {
                 // Print out the list of contacts
                 [contactList printOutContactList];
+            } else if([usernameInput isEqualToString:@"show"]) {
+                NSString* contactIndexInput = [inputCollector inputForPrompt:@"What is the ID of the contact you want to display?"];
+
+                [contactList displayContactAtIndex:[contactIndexInput integerValue]];
+            } else if(usernameInput.length > 4 && [[usernameInput substringToIndex:4] isEqualToString:@"find"]) {
+                NSString* searchTerm = [usernameInput substringFromIndex:5];
+                [contactList searchListAndDisplayContactWithTerm:searchTerm];
+            } else if(usernameInput.length == 4 && [usernameInput isEqualToString:@"find"]) {
+                NSLog(@"find command needs a second argument to work properly");
+                NSLog(@"e.g. find ted");
+            } else if([usernameInput isEqualToString:@"history"]) {
+                // Print history
+                ;
+            } else {
+                NSLog(@"Invalid command");
             }
         }
     }
