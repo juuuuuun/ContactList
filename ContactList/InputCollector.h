@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *) inputForPrompt:(NSString *)promptString;
 
+- (NSNumber *) inputForIntegerPrompt:(NSString *)promptString;
 @end
 
 NS_ASSUME_NONNULL_END

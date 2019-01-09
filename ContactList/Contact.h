@@ -14,10 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString* fullName;
 @property (nonatomic, strong) NSString* emailAddress;
-@property (nonatomic, strong) NSMutableDictionary* phoneNumbers;
+@property (nonatomic, strong, readonly) NSDictionary* phoneNumbers;
 
 - (instancetype) initWithFullName:(NSString *)fullName
                      emailAddress:(NSString *)emailAddress;
+
+- (void) addPhoneNumber:(NSString *)phoneNumber
+               andLabel:(NSString *)label;
 
 @end
 

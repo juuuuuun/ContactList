@@ -19,4 +19,14 @@
     
     return [[[NSString alloc] initWithUTF8String:userInput] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
+
+- (NSNumber *)inputForIntegerPrompt:(NSString *)promptString {
+    NSString* integerOutput = [self inputForPrompt:promptString];
+    
+    if([integerOutput rangeOfCharacterFromSet:NSCharacterSet.decimalDigitCharacterSet.invertedSet ].location == NSNotFound) {
+        return [[NSNumber alloc] initWithInteger:integerOutput.integerValue];
+    } else {
+        return nil;
+    }
+}
 @end

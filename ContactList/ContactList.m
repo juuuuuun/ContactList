@@ -25,6 +25,12 @@
     for(int i = 0; i < self.listOfContacts.count; i++) {
         Contact* contactInList = [self.listOfContacts objectAtIndex:i];
         NSLog(@"%i: <%@> (%@)", i, contactInList.fullName, contactInList.emailAddress);
+        if( contactInList.phoneNumbers.count > 0) {
+            NSLog(@"Phone numbers of this contact: ");
+            for(NSString* label in contactInList.phoneNumbers) {
+                NSLog(@"%@: %@", label, [contactInList.phoneNumbers objectForKey:label]);
+            }
+        }
     }
 }
 

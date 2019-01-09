@@ -8,6 +8,13 @@
 
 #import "Contact.h"
 
+@interface Contact () {
+ 
+    NSMutableDictionary* _mutablePhoneNumbers;
+}
+
+@end
+
 @implementation Contact
 
 -(instancetype)init {
@@ -18,8 +25,18 @@
     if([super init]) {
         _fullName = fullName;
         _emailAddress = emailAddress;
+        _mutablePhoneNumbers = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
+
+-(void)addPhoneNumber:(NSString *)phoneNumber andLabel:(NSString *)label {
+    [_mutablePhoneNumbers setObject:phoneNumber forKey:label];
+}
+
+-(NSDictionary *) phoneNumbers {
+    return [[NSDictionary alloc] initWithDictionary:_mutablePhoneNumbers];
+}
+
 
 @end
